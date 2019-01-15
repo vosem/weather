@@ -1,3 +1,31 @@
 .App {
-  text-align: center;
+	width: 100vw;
+	height: 80vh;
+	background-image: url(./img/clouds.png);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	padding-top: 20vh;
+	text-align: center;
+	color: white;
+}
+.form__city-input{
+	background-color: rgba(0,0,0,0.3);
+	height: 35px;
+	border-radius: 5px;
+	margin-right: 20px;
+	outline: none;
+	color: white;
+	padding-left: 10px;
+
+}
+::placeholder{
+	color: white;
+	font-size: 1.5em;
+	line-height: 1.5em;
+}
+.form__city-submit-btn{
+	height: 40px;
+		border-radius: 5px;
+		outline: none;
 }
