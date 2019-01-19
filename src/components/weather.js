@@ -12,10 +12,13 @@ class Weather extends Component {
 						<p>Temperature: {this.props.temp}°С</p>
 						<p>Humidity: {this.props.humidity}%</p>
 						<p>Pressure: {this.props.pressure}</p>
-						<p>Sunrise: {this.props.sunrise}, Sunset: {this.props.sunset}</p>
+						<p>
+							Sunrise: {this.props.sunrise}, Sunset:{" "}
+							{this.props.sunset}
+						</p>
 					</div>
 				)}
-				<p>{ this.props.error }</p>
+				<p>{this.props.error}</p>
 			</div>
 		);
 	}
