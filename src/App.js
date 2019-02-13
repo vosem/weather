@@ -1,4 +1,6 @@
-import React, { Component } from "react";
+import React, {
+  Component
+} from "react";
 import Info from "./components/info";
 import Form from "./components/form";
 import Weather from "./components/weather";
@@ -19,6 +21,19 @@ class App extends Component {
     error: undefined
   };
 
+  changeClouds = (data) => {
+    const container = document.getElementsByClassName('App')[0];
+    if (data.clouds.all < 45) {
+      container.classList.remove('cloudy');
+      container.classList.add('sunny');
+      console.log('cloudy');
+    } else {
+      console.log('sunny');
+      container.classList.remove('sunny');
+      container.classList.add('cloudy');
+    }
+  };
+
   gettingWeather = async e => {
     e.preventDefault();
     const city = e.target.elements.city.value;
@@ -30,7 +45,7 @@ class App extends Component {
       const data = await api_url.json();
       console.log(data);
 
-      if (data.cod == "404") {
+      if (data.cod === "404") {
         this.setState({
           city: undefined,
           country: undefined,
@@ -63,6 +78,9 @@ class App extends Component {
           sunset: sunsetDateFormatted,
           error: undefined
         });
+
+        this.changeClouds(data);
+
       }
     } else {
       this.setState({
@@ -78,22 +96,44 @@ class App extends Component {
     }
   };
 
+
+
   render() {
-    return (
-      <div className="App">
-        <Info />
-        <Form weatherMethod={this.gettingWeather} />
-        <Weather
-          city={this.state.city}
-          country={this.state.country}
-          temp={this.state.temp}
-          humidity={this.state.humidity}
-          pressure={this.state.pressure}
-          sunrise={this.state.sunrise}
-          sunset={this.state.sunset}
-          error={this.state.error}
-        />
-      </div>
+    return ( <
+      div className = "App cloudy" >
+      <
+      Info / >
+      <
+      Form weatherMethod = {
+        this.gettingWeather
+      }
+      /> <
+      Weather city = {
+        this.state.city
+      }
+      country = {
+        this.state.country
+      }
+      temp = {
+        this.state.temp
+      }
+      humidity = {
+        this.state.humidity
+      }
+      pressure = {
+        this.state.pressure
+      }
+      sunrise = {
+        this.state.sunrise
+      }
+      sunset = {
+        this.state.sunset
+      }
+      error = {
+        this.state.error
+      }
+      /> <
+      /div>
     );
   }
 }
